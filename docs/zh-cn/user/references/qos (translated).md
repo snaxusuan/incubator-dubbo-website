@@ -120,7 +120,7 @@ When using delay publishing function(com.alibaba.dubbo.config.AbstractServiceCon
 dubbo>online
 OK
 
-//online part of servies according to regulations 
+//online part of servies according to regular rules.
 dubbo>online com.*
 OK
 ```
@@ -145,7 +145,7 @@ Offline command can be used if temporary offline service is needed when bug occu
 dubbo>offline
 OK
 
-//offline some services according to regulations 
+//offline some services according to regular rules
 dubbo>offline com.*
 OK
 ```
