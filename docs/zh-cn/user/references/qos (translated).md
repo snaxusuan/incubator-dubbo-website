@@ -89,7 +89,8 @@ As Consumer side:
 +---------------------+---+
 ```
 
-### ls 列出消费者和提供者
+### ls List consumers and providers by Is
+改：Is列出消费者和生产者
 
 ```
 dubbo>ls
@@ -105,14 +106,17 @@ As Consumer side:
 +---------------------+---+
 ```
 
-列出 dubbo 的所提供的服务和消费的服务，以及消费的服务地址数
+改：列出dubbo为生产者和消费者所提供的服务
+List the services that dubbo provides to providers and consumers
 
-### Online 上线服务命令
+### Online service order 
 
-当使用延迟发布功能的时候(通过设置 com.alibaba.dubbo.config.AbstractServiceConfig#register 为 false)，后续需要上线的时候，可通过 Online 命令
+改：当使用延迟发布功能的时候(通过设置com.alibaba.dubbo.config.AbstractServiceConfig#register 为 false)，可通过Online命令上线服务
+
+When using delay publishing function(com.alibaba.dubbo.config.AbstractServiceConfig#register setted by false), you can use “online” order to online the service 
 
 ```
-//上线所有服务
+//online all services
 dubbo>online
 OK
 
@@ -121,11 +125,13 @@ dubbo>online com.*
 OK
 ```
 
-常见使用场景：
+改：由于没有进行JIT或相关资源的预热，当重启机器且线上QPS较高时，大量超时情况可能会发生。此时，可通过分批发布任务和逐渐加大流量来解决。
+某台机器由于某种原因需要下线服务后，然后需要重新上线。
 
- - 当线上的 QPS 比较高的时候，当刚重启机器的时候，由于没有进行JIT 预热或相关资源没有预热，可能会导致大量超时，这个时候，可通过分批发布服务，逐渐加大流量
- - 当由于某台机器由于某种原因，需要下线服务，然后又需要重新上线服务
+Common usage situations:
+Because there is no JIT or the related resources warm-up, when the machine is restarted and the online QPS is relatively high , a large amount of timeout may occur. At this time,the problem can be solved by distributing the wholesale service and increasing the traffic gradually.
 
+A machine needs to be back online after going offline due to some reason.
 
 
 ### Offline Command 
