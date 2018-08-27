@@ -33,10 +33,10 @@ or by modifying the JVM parameter
 -Ddubbo.application.qos.accept.foreign.ip=false
 ```
 
-to reject command sent from the host computer, allowing only the local server to act on the command 
+to reject command sent from the remote host computer, allowing only the local server to act on the command 
 
 
-### Telnet agreement with http agreement 
+### Telnet agreement and http agreement 
 
 The telnet module supports both http agreement and telnet agreement for usgae convenience under most situations. 
 
@@ -109,18 +109,18 @@ As Consumer side:
 改：列出dubbo为生产者和消费者所提供的服务
 List the services that dubbo provides to providers and consumers
 
-### Online service order 
+### Online service command 
 
 改：当使用延迟发布功能的时候(通过设置com.alibaba.dubbo.config.AbstractServiceConfig#register 为 false)，可通过Online命令上线服务
 
-When using delay publishing function(com.alibaba.dubbo.config.AbstractServiceConfig#register setted by false), you can use “online” order to online the service 
+When using delay publishing function(com.alibaba.dubbo.config.AbstractServiceConfig#register setted as false), you can use “online” command to online the service 
 
 ```
 //online all services
 dubbo>online
 OK
 
-//根据正则，上线部分服务
+//online part of servies according to regulations 
 dubbo>online com.*
 OK
 ```
@@ -129,23 +129,23 @@ OK
 某台机器由于某种原因需要下线服务后，然后需要重新上线。
 
 Common usage situations:
-Because there is no JIT or the related resources warm-up, when the machine is restarted and the online QPS is relatively high , a large amount of timeout may occur. At this time,the problem can be solved by distributing the wholesale service and increasing the traffic gradually.
+- Because there is no JIT or the related resources warm-up, when the machine is restarted and the online QPS is relatively high , a large amount of timeout situations may occur. At this time,the problem can be solved by distributing the wholesale service and increasing the traffic gradually.
 
-A machine needs to be back online after going offline due to some reason.
+- A machine needs to be back online after going offline due to some reasons.
 
 
-### Offline Command 
+### Offline service Command 
 
 Offline command can be used if temporary offline service is needed when bug occurs. 
 
 *中文更改建议：当故障发生时，如需要临时下线服务，可以使用Offline命令
 
 ```
-//take down all service 
+//offline all service 
 dubbo>offline
 OK
 
-//take down some services according to regulation 中文更改建议：根据相关规定，下线部分服务
+//offline some services according to regulations 
 dubbo>offline com.*
 OK
 ```
@@ -153,12 +153,11 @@ OK
 ### help command
 
 
-
 ```
 //list all commands
 dubbo>help
 
-//list the specific usage case of a command 
+//list the specific use case of a command 
 dubbo>help online
 +--------------+----------------------------------------------------------------------------------+
 | COMMAND NAME | online                                                                           |
